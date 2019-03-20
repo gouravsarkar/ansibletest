@@ -1,0 +1,16 @@
+- hosts:
+	remotehosts
+become: yes
+vars:
+	sample:anyvalue
+	var1: "{{ lookup('env','var1')}}"
+	var2: "{{ lookup('env','var2')}}"
+tasks:
+- name: Adding user sam1
+user:
+	name: "{{var1}}"
+	shell: /bin/false
+-name: adding file to /tmp
+file:
+	name: "{{var2}}"
+	state: touch
